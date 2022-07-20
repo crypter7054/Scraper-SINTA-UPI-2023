@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\Scraper-SINTA-UPI"
+		},
+		{
+			"path": "..\\scrap-covid19"
+		}
+	],
+	"settings": {}
+}
