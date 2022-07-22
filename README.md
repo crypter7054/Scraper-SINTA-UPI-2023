@@ -9,7 +9,7 @@ A program that functions to retrieve data for every UPI lecturer on the SINTA In
     
 ## Export Data
 ### csv
-    scrapy runspider scraper.py -o filename.csv
+    scrapy runspider scraper.py -o dosen.csv
 ### json
-    scrapy runspider scraper.py -o filename.json
+    scrapy runspider scraper.py -o dosen.json
     
