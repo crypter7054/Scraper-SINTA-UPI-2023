@@ -1,6 +1,4 @@
 import scrapy
-import re
-
 
 # logging.getLogger('scrapy').propagate = False
 
@@ -21,14 +19,12 @@ class SINTASpider(scrapy.Spider):
     def start_requests(self):
         
         urls = []
-
         for a in range (1, 174):
             urll = 'https://sinta.kemdikbud.go.id/affiliations/authors/414?page=' + str(a)
-            urls.append(urll)
+            urls.append(urll)   
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
-
 
     def parse(self, response):
         # first index is 4
