@@ -24,7 +24,7 @@ class SINTASpider(scrapy.Spider):
     def start_requests(self):
         urls = []
         
-        for a in range (1, 3):
+        for a in range (1, 174):
             urll = 'https://sinta.kemdikbud.go.id/affiliations/authors/414?page=' + str(a)
             urls.append(urll)   
 
