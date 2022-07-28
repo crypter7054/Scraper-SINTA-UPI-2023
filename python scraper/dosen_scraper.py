@@ -18,24 +18,20 @@ id_sinta = []
 # for x in tests:
 #     print(x)
 
-class SINTASpider(scrapy.Spider):
-    name = "sinta-upi"
+class DosenSpider(scrapy.Spider):
+    name = "dosen-scraper"
 
     def start_requests(self):
         urls = []
         
-        for a in range (1, 174):
+        for a in range (1, 3):
             urll = 'https://sinta.kemdikbud.go.id/affiliations/authors/414?page=' + str(a)
             urls.append(urll)   
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
-        
-        # for i in urls:
-        #     print(i)
 
     def parse(self, response):
-        # clean_image_url = []
         # first index is 4
         for i in range (4, 14):
             for dosen in response.css('body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3'):
