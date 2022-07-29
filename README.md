@@ -1,8 +1,9 @@
 # Scraper-SINTA-UPI-2022
 A program that functions to retrieve data for every UPI lecturer on the SINTA Indonesia website
 
-## Scrapy Installation
+## Installation
     pip install scrapy
+    pip install requests
 
 ## Run Program
     scrapy runspider scraper.py
