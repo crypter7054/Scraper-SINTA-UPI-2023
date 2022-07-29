@@ -1,6 +1,7 @@
 import requests
 import scrapy
 import os
+import time
 
 class PhotoSpider(scrapy.Spider):
     name = "photo-scraper"
@@ -8,7 +9,7 @@ class PhotoSpider(scrapy.Spider):
     def start_requests(self):
         urls = []
         
-        for a in range (1, 175):
+        for a in range (1, 176):
             urll = 'https://sinta.kemdikbud.go.id/affiliations/authors/414?page=' + str(a)
             urls.append(urll)   
 
@@ -34,6 +35,8 @@ class PhotoSpider(scrapy.Spider):
 
                     with open(os.path.join(dir_path, filename), 'wb') as handler:
                         handler.write(img_data)
+                    
+                    # time.sleep(1)
                 
 
                 
