@@ -1,4 +1,6 @@
 import scrapy
+import requests
+import os
 
 # data yang akan diambil
 #     nama
@@ -10,13 +12,7 @@ import scrapy
 #     SINTA Score 
 #     Affil Score 3Yr
 #     Affil Score
-
-# name = []
-id_sinta = []
-# tests = ['heehe', 'heheh']
-# print
-# for x in tests:
-#     print(x)
+#     photo 
 
 class DosenSpider(scrapy.Spider):
     name = "dosen-scraper"
@@ -24,7 +20,7 @@ class DosenSpider(scrapy.Spider):
     def start_requests(self):
         urls = []
         
-        for a in range (1, 3):
+        for a in range (1, 175):
             urll = 'https://sinta.kemdikbud.go.id/affiliations/authors/414?page=' + str(a)
             urls.append(urll)   
 
@@ -45,10 +41,7 @@ class DosenSpider(scrapy.Spider):
                 sinta_score = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(2) > div.stat-num.text-center::text').extract()
                 affil_3yr_score = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(3) > div.stat-num.text-center::text').extract()
                 affil_score = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(4) > div.stat-num.text-center::text').extract()
-                image_url = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg-2 > img::attr(src)').extract()
-                # clean_image_url = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg-2 > img::attr(src)').get()
-
-                # id_sinta.append(sinta_id)
+                # image_url = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg-2 > img::attr(src)').extract()
 
                 yield {
                     'nama' : name,
@@ -60,80 +53,21 @@ class DosenSpider(scrapy.Spider):
                     'sinta_score' : sinta_score,
                     'affil_3yr_score' : affil_3yr_score,
                     'affil_score' : affil_score,
-                    'image_url' : image_url
                 }
 
-                # urlll = 'https://sinta.kemdikbud.go.id/authors/profile/' + str(sinta_id)
-                # print(urlll)
-               
-                # print(image_url)
-                # yield{
-                #     'image_urls': clean_image_url 
-            # print(id_sinta)
-                # }
-            # print(clean_image_urls)
-    # print(name)
-    
-    # urlss = []
-        # return id_sinta
+                # url_str = []
+                # img_data = []
+                
+                # for url_str in image_url:
+                #     print(url_str)
+                #     img_data = requests.get(url_str).content
 
-# for x in id_sinta:
-#     print(x)
-# for x in tests:
-#     print(x)
+                #     filename = str(name).replace("'", "").replace('[', '').replace(']', '') + '.jpg'
 
+                #     dir_path = 'photo'
+                #     os.makedirs(dir_path, exist_ok=True)
 
-# print(tests)
+                #     with open(os.path.join(dir_path, filename), 'wb') as handler:
+                #         handler.write(img_data)
 
-    # for a in range (1, 2):
-    #     urlll = 'https://sinta.kemdikbud.go.id/authors/profile/' + str(sinta_id)
-    #     urlss.append(urlll) 
-    # for url in urlss:
-    #     yield scrapy.Request(url=url, callback=self.parse)
-
-
-
-        
-
-               
-
-
-
-# data yang akan diambil
-#   subject
-#   
-#   
-
-# nama       
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.profile-name > a
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(5) > div > div.col-lg > div.profile-name > a
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(6) > div > div.col-lg > div.profile-name > a
-
-# dept
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(1) > div.profile-dept > a
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(5) > div > div.col-lg > div.row > div:nth-child(1) > div.profile-dept > a
-
-# sinta_id
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(1) > div.profile-id
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(5) > div > div.col-lg > div.row > div:nth-child(1) > div.profile-id
-
-# scopus_h_index
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(1) > div.profile-hindex > span.profile-id.text-warning
-
-# gs_h_index
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(1) > div.profile-hindex > span.profile-id.text-success.ml-3
-
-# sinta_3yr_score
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(1) > div.stat-num.text-center
-
-# sinta_score
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(2) > div.stat-num.text-center
-
-# affil_3yr_score
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(3) > div.stat-num.text-center
-
-# affil_score
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(4) > div.stat-num.text-center
-
-# image
-# body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3 > div:nth-child(4) > div > div.col-lg-2 > img
+                
