@@ -1,0 +1,173 @@
+dept,sinta_score_overall,sinta_3yr_score
+"S1,Pendidikan Teknik Mesin",12835,5618
+"S1,PGSD Kampus Sumedang",9301,5582
+"S1,Pendidikan Matematika",10300,5529
+"S1,Teknik Elektro",11228,5066
+"S2,Pendidikan Ilmu Pengetahuan Alam",10077,4989
+"S1,Pendidikan Biologi",7940,4518
+"S1,Ilmu Keolahragaan",13377,4342
+"S3,Manajemen",8429,4144
+"S1,PGSD Kampus Cibiru",4727,3972
+"S1,Pendidikan IPA",7279,3797
+"S3,Linguistik",1202,946
+"S2,Manajemen",1659,930
+"S2,Pendidikan Sosiologi",1639,866
+"S1,Pendidikan Bahasa Arab",1375,829
+"S1,Bimbingan Dan Konseling",1037,820
+"Pro,Pendidikan Profesi Guru",1670,806
+"S3,Pendidikan Bahasa Indonesia",1094,779
+"S3,Pendidikan Seni",1810,778
+"S2,Pengembangan Kurikulum",1007,777
+"S1,Desain Produk Industri Kampus Tasikmalaya",1036,775
+"S1,Ilmu Komunikasi",1093,766
+"S2,Administrasi Pendidikan",1443,761
+"S2,Psikologi Pendidikan",1183,749
+"S1,Ilmu Komputer",4470,1940
+"S1,Manajemen",1253,738
+"S3,Pendidikan Kewarganegaraan",1421,694
+"S2,Pendidikan Jasmani",982,691
+"S1,Pendidikan Kepelatihan Olahraga",3725,1940
+"D3,Survey Pemetaan dan Informasi Geografis",2272,1866
+"S1,PGSD Penjas Kampus Sumedang",2446,1862
+"S3,Pendidikan Masyarakat",2617,1544
+"S1,PGSD Kampus Purwakarta",1234,663
+"S2,Manajemen Perkantoran",1013,660
+"S1,Perpustakaan dan Sains Informasi",1083,645
+"S1,Biologi",4519,1840
+"S1,Pendidikan Ilmu Komputer",4477,1698
+"S1,Pendidikan Khusus",2268,1464
+"S1,Pendidikan Sistem dan Teknologi Informasi Kampus P",2399,1457
+"S2,Pendidikan Kewarganegaraan",2734,1451
+"S2,Pendidikan Bahasa Jepang",1402,630
+"S2,Pendidikan Ekonomi",2770,1689
+"S1,Pendidikan Bahasa Inggris",2663,1680
+"S1,Pendidikan Jasmani, Kesehatan Dan Rekreasi",3261,1624
+"S3,Pendidikan Ilmu Pengetahuan Sosial",2551,1404
+"S1,Pendidikan Teknik Arsitektur",2522,1372
+"S2,Pendidikan Geografi",3390,1360
+"S1,Ilmu Pendidikan Agama Islam",2755,1558
+"S3,Pendidikan Ekonomi",2402,1300
+"S1,Pendidikan Geografi",2015,1270
+"S2,Pendidikan Bahasa Inggris",2156,1249
+"S2,Pendidikan Bahasa Arab",997,605
+"S3,Administrasi Pendidikan",3201,1238
+"S1,Pendidikan Guru Pendidikan Anak Usia Dini",1000,578
+"S2,Pendidikan Masyarakat",974,574
+"S1,Pendidikan Akuntansi",2087,567
+"S1,Pendidikan Manajemen Perkantoran",1284,566
+"D3,Teknik Mesin",2218,1222
+"S2,Linguistik",2065,1222
+"S1,Sains Informasi Geografi",1928,1195
+"S3,Bimbingan Dan Konseling",1767,1169
+"S1,Pendidikan Multimedia Kampus Cibiru",694,507
+"S1,Pendidikan Bahasa Sunda",1535,501
+"S2,Pariwisata",1158,561
+"S1,Rekayasa Perangkat Lunak",1035,548
+"S1,PGPAUD Kampus Purwakarta",753,546
+"S2,Pendidikan Guru Sekolah Dasar Kampus Cibiru",983,545
+"S1,Pendidikan Pariwisata",1821,1168
+"S1,Matematika",2529,1156
+"S1,PGPAUD Kampus Tasikmalaya",1856,1152
+"S2,Pendidikan Bahasa dan Budaya Sunda",2161,1145
+"S1,Manajemen Resort dan Leisure",1120,493
+"S1,Arsitektur",848,487
+"S1,Bahasa dan Sastra Indonesia",652,483
+"S3,Pendidikan Umum dan Karakter",1082,481
+"S1,Pendidikan Masyarakat",732,513
+"S1,Pendidikan Bahasa Korea",1853,1141
+"S2,Pendidikan Olahraga",1650,450
+"S1,Pendidikan IPS",692,446
+"S1,Pendidikan Seni Tari",751,477
+"S2,Pendidikan Agama Islam",761,477
+"S2,Pendidikan Anak Usia Dini",1358,463
+"S1,Ilmu Ekonomi dan Keuangan Islam",785,458
+"S1,Sistem Informasi Kelautan",633,430
+"S1,PGPAUD Kampus Cibiru",862,398
+"S1,PGPAUD Kampus Serang",503,393
+"S2,Pendidikan Bahasa Perancis",608,379
+"S1,Psikologi",593,368
+"S1,Pendidikan Sejarah",655,361
+"S1,Pendidikan Guru Sekolah Dasar",466,346
+"S1,Pendidikan Seni Musik",519,339
+"S1,Film dan Televisi",509,331
+"S2,Pendidikan Seni",675,331
+"S1,Pendidikan Sosiologi",332,322
+"Pro,Profesi Ners Kampus Sumedang",339,181
+"S1,Pendidikan Ekonomi",521,315
+"S1,Administrasi Pendidikan",362,164
+"S1,Manajemen Industri Katering",276,138
+"S2,Pendidikan Khusus",237,82
+"S1,Pendidikan Teknik Bangunan",469,311
+"S1,Mekatronika dan Kecerdasan Buatan Kampus Purwakart",722,304
+"S2,Pendidikan Bahasa Indonesia",409,299
+"S1,Pendidikan Pancasila Dan Kewarganegaraan",699,273
+"S2,Pendidikan Umum dan Karakter",168,138
+"S1,Kewirausahaan Kampus Tasikmalaya",186,126
+"S1,Pendidikan Tata Busana",489,120
+"S2,Pendidikan Sejarah",87,77
+"S1,Pendidikan Bahasa Perancis",138,68
+"S1,Bisnis Digital",427,297
+"S1,Kepelatihan Fisik Olahraga",366,284
+"S1,Teknik Logistik",374,266
+"S2,Magister Ilmu Akuntansi",448,258
+"S1,Pendidikan Bahasa Dan Sastra Indonesia",246,246
+"S1,Pendidikan Bahasa Jepang",375,120
+"S2,Pedagogik",391,110
+"S1,Akuntansi",189,109
+"S1,Gizi",81,51
+"S1,Industri Pariwisata",79,41
+"S1,Pendidikan Bahasa Jerman",75,35
+"S2,Pendidikan Bahasa Indonesia Bagi Penutur Asing",628,283
+"D3,Keperawatan Kampus Sumedang",326,246
+"S1,Teknologi Pendidikan",435,229
+"S1,Teknik Komputer",653,213
+"S1,Pendidikan Kelautan dan Perikanan Kampus Serang",185,95
+"S1,Desain Komunikasi Visual",52,27
+"S1,Logistik Kelautan",10,10
+"S1,Pendidikan Seni Rupa",347,193
+"S1,Keperawatan Kampus Sumedang",232,192
+"D4,Survei Pemetaan dan Informasi Geografis",0,0
+"S1,Ners",0,0
+"Pro,Ners",0,0
+"S1,Musik",0,0
+"S1,Manajemen Pemasaran Pariwisata",1339,182
+"S2,Kimia",39152,12789
+"S1,Pendidikan Fisika",17123,9872
+"S3,Pendidikan Dasar",15342,9425
+"S3,Pendidikan Ilmu Pengetahuan Alam",18368,9324
+"S2,Pendidikan Fisika",16186,8909
+"S3,Pendidikan Matematika",13736,8505
+"S2,Pendidikan Matematika",12172,8260
+"S1,Fisika",16141,6883
+"S2,Pendidikan Ilmu Komputer",14052,6109
+"S2,Pendidikan Teknologi dan Kejuruan",13658,5663
+"S2,Pendidikan Biologi",5512,3525
+"S1,Pendidikan Teknik Otomotif",7136,3495
+"S1,Pendidikan Kesejahteraan Keluarga",7115,3368
+"S1,Kimia",9013,3132
+"S3,Pendidikan Teknologi dan Kejuruan",5180,2845
+"S3,Pendidikan Bahasa Inggris",4616,2811
+"S3,Pendidikan Olahraga",4081,2733
+"D3,Keperawatan",3859,2682
+"S2,Pendidikan Kimia",6126,2668
+"S3,Pendidikan Khusus",3469,2605
+"S1,Pendidikan Teknik Otomasi Industri dan Robotika",4879,2503
+"S2,Arsitektur",5789,2502
+"S1,Pendidikan Kimia",4337,2449
+"S2,Pendidikan Dasar",3296,2435
+"S3,Pendidikan Geografi",4055,2296
+"S1,Sistem Telekomunikasi",6360,2216
+"S3,Pengembangan Kurikulum",3054,2146
+"S1,Pendidikan Teknik Elektro",4787,2116
+"S1,PGSD Kampus Tasikmalaya",2841,2114
+"S2,Pendidikan Guru Sekolah Dasar Kampus Tasikmalaya",2585,1955
+"S1,Pendidikan Teknologi Agroindustri",2390,1120
+"S2,Pendidikan Ilmu Pengetahuan Sosial",1888,1116
+"S1,Pendidikan Bisnis",2627,1112
+"S1,PGSD Kampus Serang",1416,1111
+"S1,Pendidikan Tata Boga",1981,1019
+"S2,Bimbingan Dan Konseling",1465,1011
+"S3,Pendidikan Sejarah",2200,1003
+"S1,PGSD Pendidikan Jasmani",1834,978
+"S1,Bahasa dan Sastra Inggris",1514,969
+"S1,Teknik Sipil",1484,957
