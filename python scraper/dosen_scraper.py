@@ -1,26 +1,15 @@
 import scrapy
-import requests
-import os
-
-# data yang akan diambil
-#     nama
-#     dept
-#     sinta_id
-#     Scopus H-index
-#     GS H-index
-#     SINTA Score 3Yr
-#     SINTA Score 
-#     Affil Score 3Yr
-#     Affil Score
-#     photo 
 
 class DosenSpider(scrapy.Spider):
     name = "dosen-scraper"
-
+    
     def start_requests(self):
         urls = []
         
-        for a in range (1, 175):
+        # get the url start from page 1 to page 176
+        for a in range (1, 176):
+
+            # initialize url + page number 
             urll = 'https://sinta.kemdikbud.go.id/affiliations/authors/414?page=' + str(a)
             urls.append(urll)   
 
@@ -28,46 +17,34 @@ class DosenSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        # first index is 4
-        for i in range (4, 14):
-            for dosen in response.css('body > div > div.col-md-8 > div.content > div > div.au-list-affil.mt-3'):
-                
-                name = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.profile-name > a::text').extract()
-                dept = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(1) > div.profile-dept > a::text').extract()[0].strip()
-                sinta_id = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(1) > div.profile-id::text').get().replace('ID :', '').replace(' ', '')
-                scopus_h_index = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(1) > div.profile-hindex > span.profile-id.text-warning::text').get().replace('Scopus H-Index :', '').replace(' ', '')
-                gs_h_index = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(1) > div.profile-hindex > span.profile-id.text-success.ml-3::text').get().replace('GS H-Index :', '').replace(' ', '')
-                sinta_3yr_score = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(1) > div.stat-num.text-center::text').extract()
-                sinta_score = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(2) > div.stat-num.text-center::text').extract()
-                affil_3yr_score = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(3) > div.stat-num.text-center::text').extract()
-                affil_score = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg > div.row > div:nth-child(2) > div > div:nth-child(4) > div.stat-num.text-center::text').extract()
-                # image_url = dosen.css('div:nth-child(' + str(i) + ') > div > div.col-lg-2 > img::attr(src)').extract()
-
-                yield {
-                    'nama' : name,
-                    'dept' : dept,
-                    'sinta_id' : sinta_id,
-                    'scopus_h_index' : scopus_h_index,
-                    'gs_h_index' : gs_h_index,
-                    'sinta_3yr_score' : sinta_3yr_score,
-                    'sinta_score' : sinta_score,
-                    'affil_3yr_score' : affil_3yr_score,
-                    'affil_score' : affil_score,
-                }
-
-                # url_str = []
-                # img_data = []
-                
-                # for url_str in image_url:
-                #     print(url_str)
-                #     img_data = requests.get(url_str).content
-
-                #     filename = str(name).replace("'", "").replace('[', '').replace(']', '') + '.jpg'
-
-                #     dir_path = 'photo'
-                #     os.makedirs(dir_path, exist_ok=True)
-
-                #     with open(os.path.join(dir_path, filename), 'wb') as handler:
-                #         handler.write(img_data)
-
-                
+        for link in response.css('div.profile-name a::attr(href)'):
+            yield response.follow(link.get(), callback=self.parse_profile)
+                    
+    def parse_profile(self, response):
+        yield{
+            'name' : response.css('body > div > div.col-md-8 > div.content > div > div.row.p-3 > div.col-lg.col-md > h3 > a::text').get(),
+            'sinta_id' : response.css('body > div > div.col-md-8 > div.content > div > div.row.p-3 > div.col-lg.col-md > div.meta-profile > a:nth-child(5)::text').get().replace('SINTA ID :', '').replace(' ', ''),
+            'dept' : response.css('body > div > div.col-md-8 > div.content > div > div.row.p-3 > div.col-lg.col-md > div.meta-profile > a:nth-child(3)::text').get().strip(),
+            'sinta_score' : response.css('body > div > div.col-md-8 > div.content > div > div.stat-profile > div > div:nth-child(2) > div.pr-num::text').get(),
+            'sinta_3yr_score' : response.css('body > div > div.col-md-8 > div.content > div > div.stat-profile > div > div:nth-child(4) > div.pr-num::text').get(),
+            'affil_score' : response.css('body > div > div.col-md-8 > div.content > div > div.stat-profile > div > div:nth-child(6) > div.pr-num::text').get(),
+            'affil_3yr_score' : response.css('body > div > div.col-md-8 > div.content > div > div.stat-profile > div > div:nth-child(8) > div.pr-num::text').get(),
+            'scopus_h_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(4) > td.text-warning::text').get(),
+            'gs_h_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(4) > td.text-success::text').get(),
+            'wos_h_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(4) > td.text-primary::text').get(),
+            'scopus_i10_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(5) > td.text-warning::text').get(),
+            'gs_i10_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(5) > td.text-success::text').get(),
+            'wos_i10_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(5) > td.text-primary::text').get(),
+            'scopus_g_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(6) > td.text-warning::text').get(),
+            'gs_g_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(6) > td.text-success::text').get(),
+            'wos_g_index' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(6) > td.text-primary::text').get(),
+            'scopus_article' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td.text-warning::text').get(),
+            'scopus_citation' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(2) > td.text-warning::text').get(),
+            'scopus_cited_document' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(3) > td.text-warning::text').get(),
+            'gs_article' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td.text-success::text').get(),
+            'gs_citation' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(2) > td.text-success::text').get(),
+            'gs_cited_document' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(3) > td.text-success::text').get(),
+            'wos_article' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td.text-primary::text').get(),
+            'wos_citation' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(2) > td.text-primary::text').get(),
+            'wos_cited_document' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(3) > td.text-primary::text').get()
+        }
