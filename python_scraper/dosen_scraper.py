@@ -1,4 +1,6 @@
 import scrapy
+import re
+import json
 
 class DosenSpider(scrapy.Spider):
     name = "dosen-scraper"
@@ -6,7 +8,7 @@ class DosenSpider(scrapy.Spider):
     def start_requests(self):
         urls = []
         
-        # get the url start from page 1 to page 176
+        # get the url start from page 1 to page 175
         for a in range (1, 176):
 
             # initialize url + page number 
@@ -47,4 +49,13 @@ class DosenSpider(scrapy.Spider):
             'wos_article' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td.text-primary::text').get(),
             'wos_citation' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(2) > td.text-primary::text').get(),
             'wos_cited_document' : response.css('body > div > div.col-md-4.d-none.d-md-block.d-lg-block.d-xl-block.decor.animate__animated.animate__slideInRight > div.side-content > div:nth-child(3) > div > table > tbody > tr:nth-child(3) > td.text-primary::text').get()
+            # 'article_q1' : re.findall("value:(.+?),\n", response.body.decode("utf-8"), re.S)[0].strip(),
+            # 'article_q2' : re.findall("value:(.+?),\n", response.body.decode("utf-8"), re.S)[1].strip(),
+            # 'article_q3' : re.findall("value:(.+?),\n", response.body.decode("utf-8"), re.S)[2].strip(),
+            # 'article_q4' : re.findall("value:(.+?),\n", response.body.decode("utf-8"), re.S)[3].strip(),
+            # 'article_undefined_q' : re.findall("value:(.+?),\n", response.body.decode("utf-8"), re.S)[4].strip(),
+            # 'articles_ro' : re.findall("data: (.+?)]\n", response.body.decode("utf-8"), re.S)[5],
+            # 'conference_ro' : re.findall("value:(.+?),", response.body.decode("utf-8"), re.S)[7].replace('[\n', '').replace(' ', ''),
+            # 'conference_ro' : re.findall("value:(.+?),\n", response.body.decode("utf-8"), re.S)[6],
+            # 'other_ro' : re.findall("value:(.+?),\n", response.body.decode("utf-8"), re.S)[7],
         }

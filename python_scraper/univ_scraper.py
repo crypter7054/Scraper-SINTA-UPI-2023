@@ -42,14 +42,17 @@ import json
 class UnivSpider(scrapy.Spider):
     name = "univ-scraper"
 
+    # requests
     def start_requests(self):
 
+        # initialize the url
         urls = ['https://sinta.kemdikbud.go.id/affiliations/profile/414']
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
+        # save to dir
         yield{
             'name' : response.css('body > div > div.col-md-8 > div.content > div > div.univ-profile > div > div > h3 > a::text').extract(),
             'address' : response.css('body > div > div.col-md-8 > div.content > div > div.univ-profile > div > div > div > a.affil-loc::text').extract(),

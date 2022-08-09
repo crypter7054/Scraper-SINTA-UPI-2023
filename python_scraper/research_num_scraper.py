@@ -1,4 +1,3 @@
-from asyncio import sleep
 import scrapy
 import re
 import time
